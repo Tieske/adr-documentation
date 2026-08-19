@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ADR front matter",
+  "description": "Schema for the YAML front matter block of an ADR, as defined in ADR-PROCESS.md.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["Proposed", "Accepted", "Superseded"]
+    },
+    "proposed_date": {
+      "type": "string",
+      "description": "YYYY-MM-DD, Pattern intentionally simple to please many regex engines",
+      "pattern": "^20[2-9][0-9][-][0-1]?[0-9][-][0-3]?[0-9]$"
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["status", "proposed_date", "supersedes", "tags"],
+  "additionalProperties": false
+}
